@@ -97,10 +97,8 @@ tests:
   - cd: tbl.delete().get_field('deleted')
     ot: 14
 
-  - cd: c2 = tbl.changes({squash:1000000})
-    py: c2 = tbl.changes(squash=1000000)
-    runopts:
-      changefeed_queue_size: 10
+  - cd: c2 = tbl.changes({squash:1000000, changefeed_queue_size:10})
+    py: c2 = tbl.changes(squash=1000000, changefeed_queue_size=10)
 
 
   - cd: tbl.insert([{'id':0}, {'id':1}, {'id':2}, {'id':3}, {'id':4}, {'id':5}, {'id':6}]).get_field('inserted')

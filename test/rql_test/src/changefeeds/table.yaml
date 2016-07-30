@@ -56,9 +56,7 @@ tests:
 
     # - changes overflow
 
-    - cd: overflow = tbl.changes()
-      runopts:
-        changefeed_queue_size: 100
+    - cd: overflow = tbl.changes(changefeed_queue_size=100)
     # add enough entries to make sure we get the overflow error
     - js: tbl.insert(r.range(200).map(function(x) { return({}); }))
       py: tbl.insert(r.range(200).map(lambda x: {}))
